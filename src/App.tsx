@@ -1,24 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import MainScreen from './components/MainScreen';
+import DetalisScreen from './components/DetalisScreen';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <Router>
+        <Switch>
+          <Route exact path={['/p=:id', '/']} component={MainScreen} />
+          <Route exact path='/detail/:code' component={DetalisScreen} />
+        </Switch>
+      </Router>
     </div>
   );
 }
